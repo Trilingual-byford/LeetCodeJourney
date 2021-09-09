@@ -1,0 +1,51 @@
+class Solution {
+    public int myAtoi(String s) {
+        Boolean isNeg=false;
+        String strStimed=s.trim();
+        if(strStimed.length()==0){
+            return 0;
+        }
+        StringBuilder numberBuilder=new StringBuilder();
+        for(int i=0;i<strStimed.length();i++){
+            if(i==0&&strStimed.charAt(i)=='-'){
+                isNeg=true;
+                continue;
+            }else if(i==0&&strStimed.charAt(i)=='+'){
+                continue;
+            }else{
+                if(strStimed.charAt(i)<='9'&&'0'<=strStimed.charAt(i)){
+                    numberBuilder.append(strStimed.charAt(i));
+                }else{
+                    break;
+                }
+            }
+            
+        }
+        long finalNum=0L;
+                     System.out.println("numberBuilder:"+numberBuilder);
+
+        char[] numChars=numberBuilder.toString().toCharArray();
+             System.out.println("numChars:"+numChars);
+                     System.out.println("numChars.length:"+numChars.length);
+
+        // Number calculate
+        for(int j=0;j<numChars.length;j++){
+            System.out.println("finalNum:"+finalNum);
+             System.out.println("J:"+Character.getNumericValue(numChars[j]));
+                finalNum=finalNum*10+Character.getNumericValue(numChars[j]);
+                if(isNeg){
+                    if((-1*finalNum)<Integer.MIN_VALUE){
+                       return Integer.MIN_VALUE;
+                    }
+                }else{
+                    if(finalNum>Integer.MAX_VALUE){
+                       return Integer.MAX_VALUE;
+                    }
+                }
+                
+        }
+        return isNeg?(int) finalNum*-1:(int) finalNum;
+        
+        
+    }
+}
