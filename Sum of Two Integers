@@ -1,0 +1,15 @@
+class Solution {
+    public int getSum(int a, int b) {
+        int sum,carry;
+        // get sum without carry added
+        sum=a^b;
+        // caculate the carry
+        carry=(a&b)<<1;
+        if(carry!=0){
+            return getSum(carry,sum); 
+        }
+        return sum;
+        // One line solution
+        // return a == 0 ? b : getSum((a & b) << 1, a ^ b);    
+    }
+}
