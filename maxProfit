@@ -1,0 +1,21 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices.length==0){
+            return 0;
+        }
+        int maxProfitSoFar=0;
+        int lowestPointSoFar=prices[0];
+        int nextPoint=0;
+        //int maxProfitCurrent=0;
+        for(int i=0;i<prices.length;i++){
+            if(prices[i]<lowestPointSoFar){
+                lowestPointSoFar=prices[i];
+            }
+            int profit=prices[i]-lowestPointSoFar;
+            if(profit>maxProfitSoFar){
+               maxProfitSoFar=profit;
+            }
+        }
+        return maxProfitSoFar;
+    }
+}
