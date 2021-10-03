@@ -25,3 +25,17 @@ class Solution {
         return nums.length-dupTimes;
     }
 }
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int nonDupIndex=0;
+        int lastValue=-120;
+        for(int i:nums){
+            if(i!=lastValue){
+               nums[nonDupIndex]=i;
+               nonDupIndex++;
+            }
+            lastValue=i;
+        }
+        return nonDupIndex;
+    }
+}
