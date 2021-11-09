@@ -1,0 +1,37 @@
+package track
+
+import java.lang.Exception
+
+fun main(args: Array<String>) {
+    // このコードは標準入力と標準出力を用いたサンプルコードです。
+    // このコードは好きなように編集・削除していただいて構いません。
+    // ---
+    // This is a sample code to use stdin and stdout.
+    // Edit and remove this code as you like.
+
+    var idx = 0
+    do {
+        var str = readLine()
+        if (str == null) break
+        println("line[${ idx++ }]:${ str }")
+        val inputArray: List<Int> = str.split(" ").map { it.toInt() }
+        if(inputArray.size<3){
+            throw Exception("Invalid Input")
+        }
+        printlnResult(inputArray)
+    } while (true)
+
+}
+fun printlnResult(inputData: List<Int>) {
+    val currentWeight = inputData[0]
+    val height = inputData[1]
+    val targetBMI = inputData[2]
+    val currentBMI = 10000 * currentWeight / (height * height)
+    if(currentBMI<= targetBMI){
+        // When BMI is less than the target BMI output 0
+        println(0)
+    }else{
+        val lossWeight = currentWeight - (targetBMI * height * height / 10000)
+        println(lossWeight)
+    }
+}
