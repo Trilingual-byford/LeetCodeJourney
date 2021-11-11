@@ -1,0 +1,17 @@
+class Solution {
+    fun isPalindrome(s: String): Boolean {
+        val rex=Regex("[^A-Za-z0-9]")
+        val alNumWithLowCase=rex.replace(s,"").toLowerCase()
+        var startIndex=0
+        var endIndex=alNumWithLowCase.length-1
+        while(startIndex<endIndex){
+            if(alNumWithLowCase.get(startIndex).compareTo(alNumWithLowCase.get(endIndex))!=0){
+                return false
+            }
+            startIndex++
+            endIndex--
+        }
+        return true;
+        
+    }
+}
