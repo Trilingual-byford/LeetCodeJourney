@@ -1,0 +1,21 @@
+class Solution {
+    fun longestCommonPrefix(strs: Array<String>): String {
+        var res=""
+        val fristStr=strs[0]
+        for(i in 0..(fristStr.length-1)){
+            for(j in 0..(strs.size-1)){
+                val comparStr=strs[j]
+                if(comparStr.length>i&&fristStr.get(i).equals(comparStr.get(i))){
+                    if(j==(strs.size-1)){
+                        res+=fristStr.get(i)
+                    }
+                    continue;
+                }else{
+                    return res;
+                }
+            }
+            
+        }
+        return res;
+    }
+}
